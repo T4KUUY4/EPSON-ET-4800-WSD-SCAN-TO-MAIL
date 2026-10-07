@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>wsd-scan</Name>
+  <Repository>python:3.12-alpine</Repository>
+  <Registry>https://hub.docker.com/_/python</Registry>
+  <Network>host</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <Overview>WSD push-scan to email for WSD-capable printers. Each destination appears on the printer under Scan - Computer (WSD); scans are emailed as PDF. Pick the printer, view its features and configure destinations and the mail server in the web UI.</Overview>
+  <Category>Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8098]/</WebUI>
+  <TemplateURL/>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs>python -u /app/wsdscan.py</PostArgs>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="App folder" Target="/app" Default="/mnt/user/appdata/wsd-scan/app" Mode="ro" Description="Folder containing wsdscan.py (a clone of the repository)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/wsd-scan/app</Config>
+  <Config Name="Data folder" Target="/data" Default="/mnt/user/appdata/wsd-scan/data" Mode="rw" Description="Settings and scanned PDFs" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/wsd-scan/data</Config>
+  <Config Name="Web UI port" Target="WEB_PORT" Default="8098" Mode="" Description="Port of the config page (host networking)" Type="Variable" Display="always" Required="true" Mask="false">8098</Config>
+  <Config Name="Printer IP" Target="PRINTER_IP" Default="" Mode="" Description="Optional: printer IP to start with (give it a DHCP reservation). The printer can also be found and picked in the web UI." Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="Advertise IP" Target="ADVERTISE_IP" Default="" Mode="" Description="Optional: Unraid IP the printer should call back, if auto-detection picks the wrong one" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+</Container>

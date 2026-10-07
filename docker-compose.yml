@@ -1,0 +1,17 @@
+services:
+  # Press Scan -> Computer (WSD) on the printer, pick a destination, get an email.
+  # Web UI: http://<docker-host>:8098 (WEB_PORT in .env)
+  wsd-scan:
+    image: python:3.12-alpine
+    container_name: wsd-scan
+    restart: unless-stopped
+    # Host networking so the printer can reach the callback URL and
+    # WS-Discovery multicast works. Needs a Linux Docker host.
+    network_mode: host
+    command: ["python", "-u", "/app/wsdscan.py"]
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - ./wsdscan.py:/app/wsdscan.py:ro
+      - ./data:/data

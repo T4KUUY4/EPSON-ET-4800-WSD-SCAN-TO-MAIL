@@ -189,3 +189,9 @@ rejected. Include that when reporting a problem.
 - The web UI has **no login**. Run it only on a trusted network and don't expose
   port 8098 to the internet.
 - The SMTP password is stored in plain text in `config.json` in the data folder.
+
+## License
+
+[GNU General Public License v3.0 or later](LICENSE). You may use, modify and share
+this software; if you distribute a modified version, its source code must be made
+available under the same license.
